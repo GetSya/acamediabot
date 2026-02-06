@@ -514,27 +514,28 @@ const font = (text, style = 1) => {
   });
   return output.join('');
 };
-/*
         const separator = chalk.hex("#00ffd5")("\n<================= SPASI =================>\n")
-        const neoLabel = chalk.hex("#ff00c8")("[ Haidar Smg ]")
+        const neoLabel = chalk.hex("#ff00c8")("[ ADA YANG CHAT ]")
         const neoTime = chalk.hex("#00ffff")(new Date().toLocaleString())
-*/
-if (isCmd) {
-    console.log(
-        '\x1b[1;31m~\x1b[1;37m>',
-        '[\x1b[1;32m ✓ \x1b[1;37m]',
-        color(pushname),
-        'use',
-        color(command),
-        m.isGroup
-            ? 'in group ' + color(groupName)
-            : 'in private chat',
-        'args :',
-        color(args.length)
+
+if (m.message && m.isGroup && m.text.startsWith('.')) {
+     console.log(separator)
+     console.log(chalk.hex("#00ff88")(">> Group Detected"))
+     console.log(
+        neoLabel, chalk.bgHex("#101010").white(neoTime),
+        chalk.bgHex("#0055ff").white(` ${budy || m.mtype} `)
     )
-
+    console.log(chalk.hex("#ffaa00")("↳ From:"), chalk.hex("#00ff00")(pushname), chalk.hex("#999999")(m.sender))
+    console.log(chalk.hex("#ffaa00")("↳ In Group:"), chalk.hex("#00ffcc")(groupName), chalk.hex("#666666")(m.chat))
+} else {
+    console.log(separator)
+    console.log(chalk.hex("#00ff88")(">> Private Chat"))
+    console.log(
+        neoLabel, chalk.bgHex("#101010").white(neoTime),
+        chalk.bgHex("#0055ff").white(` ${budy || m.mtype} `)
+    )
+    console.log(chalk.hex("#ffaa00")("↳ From:"), chalk.hex("#00ff00")(pushname), chalk.hex("#999999")(m.sender))
 }
-
 
 let pinterestSession = {};
 const cooldowns = {}; // Format: { commandName: timestamp }
