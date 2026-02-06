@@ -402,8 +402,8 @@ asya.sendListButtonv2 = async (jid, text, list, footer, image, quoted, options =
         );
         };
 
-        asya.sendPresenceUpdate('uavailable', from).
-
+        asya.sendPresenceUpdate('uavailable', from)
+        
         const vcards = 'BEGIN:VCARD\n' // metadata of the contact card
             + 'VERSION:3.0\n'
             + 'FN:Arasya Rafi\n' // full name
