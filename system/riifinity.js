@@ -403,7 +403,7 @@ asya.sendListButtonv2 = async (jid, text, list, footer, image, quoted, options =
         };
 
         asya.sendPresenceUpdate('uavailable', from)
-        
+
         const vcards = 'BEGIN:VCARD\n' // metadata of the contact card
             + 'VERSION:3.0\n'
             + 'FN:Arasya Rafi\n' // full name
@@ -1014,7 +1014,6 @@ switch (command) {
                             limited_time_offer: {
                                 text: "🕒 Promo terbatas!",
                                 url: "https://store.arasyarafi.xyz",
-                                copy_code: "STORE2024"
                             },
                             tap_target_configuration: {
                                 title: "🏪",
@@ -1034,19 +1033,19 @@ switch (command) {
                                 })
                             },
                             {
-                                name: "quick_reply",
+                                name: "cta_url",
                                 buttonParamsJson: JSON.stringify({
                                     display_text: "📞 Kontak Admin",
-                                    id: "/owner",
+                                    url: "https://wa.me/6288214772441?text=hallo%20kak"
                                 })
-                            },
+                            },/*
                             {
                                 name: "cta_url",
                                 buttonParamsJson: JSON.stringify({
                                     display_text: "Website",
                                     url: "https://store.arasyarafi.xyz",
                                 })
-                            }
+                            }**/
                         ]
                     }
                 }
