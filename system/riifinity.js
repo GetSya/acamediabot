@@ -1406,7 +1406,7 @@ case 'test': case 'test':{
                                     }
                                 ]
                             }
-                            client.sendListButtonv2(global.ownernumber + `@s.whatsapp.net`, cpap, unduh, "Joy", { quoted: m })
+                            asya.sendListButtonv2(global.ownernumber + `@s.whatsapp.net`, cpap, unduh, "Joy", { quoted: m })
                             reply(`Laporan berhasil terkirim\nLaporan : ${text}\nPengirim : ${m.sender.split("@")[0]}`)
                         }
                         break
