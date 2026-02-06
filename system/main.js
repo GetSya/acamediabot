@@ -224,58 +224,41 @@ asya.ev.on("connection.update",async  (s) => {
     
     return await asya.sendMessage(jid, listMessage, { quoted: quoted });
 };
-// Fungsi helper untuk sendProductList
-asya.sendProductList = async (jid, text, products, db, prefix, quoted) => {
-    const sections = [];
-    let currentSection = null;
-    
-    // Group products by category
-    const categories = {};
-    products.forEach(product => {
-        const category = product.kategori || 'UMUM';
-        if (!categories[category]) {
-            categories[category] = [];
+
+asya.sendListButtonv2 = async (jid, text, list, footer, image, quoted, options = {}) => {
+    let msg000 = generateWAMessageFromContent(jid, {viewOnceMessage: {
+        message: {
+            "messageContextInfo": {
+              "deviceListMetadata": {},
+              "deviceListMetadataVersion": 2
+            },
+            interactiveMessage: proto.Message.InteractiveMessage.create({
+              body: proto.Message.InteractiveMessage.Body.create({
+                text: text, 
+              }),
+              footer: proto.Message.InteractiveMessage.Footer.create({
+                text: footer, 
+              }),
+              nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
+                buttons: [{
+                    name: "single_select",
+                    buttonParamsJson: JSON.stringify(list)
+                  }
+               ],
+              }), 
+              contextInfo: {
+                      mentionedJid: [m.sender], 
+                      forwardingScore: 999,
+                      isForwarded: true
+                    }
+            })
         }
-        categories[category].push(product);
-    });
-    
-    // Create sections for each category
-    Object.keys(categories).forEach(category => {
-        const rows = categories[category].map(product => {
-            const globalIndex = db.findIndex(p => p.id === product.id) + 1;
-            const cost = getFinalPrice(product.harga_jual);
-            return {
-                title: `${STORE_ICONS.product} ${product.nama_barang}`,
-                description: `${formatIDR(cost.total)} | Stok: ${product.stok} | Kode: ${product.kode_barang}`,
-                rowId: `${prefix}beli ${globalIndex}`
-            };
-        });
-        
-        sections.push({
-            title: `${STORE_ICONS.category} ${category}`,
-            rows: rows
-        });
-    });
-    
-    // Add back navigation
-    sections.push({
-        title: `${STORE_ICONS.home} NAVIGASI`,
-        rows: [{
-            title: `${STORE_ICONS.home} Kembali ke Menu Utama`,
-            description: "Kembali ke menu kategori",
-            rowId: `${prefix}store`
-        }]
-    });
-    
-    return await asya.sendListMessage(
-        jid,
-        text,
-        "📦 DAFTAR PRODUK",
-        "BELI PRODUK",
-        sections,
-        quoted
-    );
-};
+      }
+    }, {userJid: m.chat, quoted: m})
+    asya.relayMessage(msg000.key.remoteJid, msg000.message, {
+      messageId: msg000.key.id, quoted: m,
+      })
+      }
 
     asya.sendImageAsSticker = async (jid, path, quoted, options = {}) => {
         let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,` [1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)

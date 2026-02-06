@@ -114,9 +114,9 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
 const STORE_SETTINGS = {
     slug: 'acamedia',
     apikey: 'ZU0JBrZtUZSqI8nAqz73zbtgJFtj0tY5',
-    expired: 10,
+    expired: 1,
     feePercent: 0.007,
-    feeFixed: 310
+    feeFixed: 340
 }
 
 // --- DESIGN SETTINGS ---
@@ -909,6 +909,9 @@ const createStorePage = (products, page = 1, title = "Daftar Produk") => {
 switch (command) {
     case 'store':
     case 'toko':
+        case 'start':
+            case 'menu':
+                case 'help':
         {
             let db = await loadDB();
             if (db.length === 0) {
@@ -1022,10 +1025,11 @@ case 'semuaproduk':
         const page = args[0] ? parseInt(args[0]) : 1;
         const sections = createStorePage(db, page, "📦 SEMUA PRODUK");
         
+        var tekslagi = `Silahkan dipilih daftar produk berikut.\nJika ingin berganti halaman teman teman bisa pilih tombol halaman selanjutnya. \n\nHalaman ${page} dari ${Math.ceil(db.length / 10)}`
         const msg = {
             interactiveMessage: {
                 header: `📦 SEMUA PRODUK`,
-                title: `Halaman ${page} dari ${Math.ceil(db.length / 10)}`,
+                title: tekslagi,
                 footer: `Total ${db.length} produk`,
                 image: { url: "https://files.catbox.moe/mb0g1x.png" },
                 nativeFlowMessage: {
@@ -1248,19 +1252,18 @@ case 'semuaproduk':
             try {
                 const res = await createQris(cost.total, item.nama_barang);
                 
-                const paymentBox = 
-`╔══════════════════════════════╗
-║     ${STORE_ICONS.payment} PEMBAYARAN     ║
-╠══════════════════════════════╣
-║ ${STORE_ICONS.product} ${item.nama_barang}
-║ ${STORE_ICONS.code} ${item.kode_barang}
-╠══════════════════════════════╣
-║ ${STORE_ICONS.price} Harga: ${formatIDR(cost.base)}
-║ ${STORE_ICONS.admin} Admin: ${formatIDR(cost.tax)}
-╠══════════════════════════════╣
-║ 💎 TOTAL: ${formatIDR(cost.total)}
-║ ${STORE_ICONS.time} Berlaku: ${STORE_SETTINGS.expired} menit
-╚══════════════════════════════╝`;
+const paymentBox =
+`${STORE_ICONS.payment} PEMBAYARAN
+
+${STORE_ICONS.product} ${item.nama_barang}
+${STORE_ICONS.code} ${item.kode_barang}
+
+${STORE_ICONS.price} Harga : ${formatIDR(cost.base)}
+${STORE_ICONS.admin} Admin : ${formatIDR(cost.tax)}
+
+💎 Total : ${formatIDR(cost.total)}
+${STORE_ICONS.time} Berlaku ${STORE_SETTINGS.expired} menit`;
+
                 
                 const caption = `${paymentBox}\n\n${STORE_ICONS.qris} *Scan QR Code untuk pembayaran*`;
                 
@@ -1345,10 +1348,10 @@ case 'owner': {
 VERSION:3.0
 N:;;;; 
 FN:${global.ownername}
-item1.TEL;waid=62895383301627:62895383301627
+item1.TEL;waid=6288214772441:6288214772441
 item1.X-ABLabel:ᴅᴇᴠᴇʟᴏᴘᴇʀ
 item2.TEL;waid=${global.ownernumber}:${global.ownernumber}
-item2.X-ABLabel:ᴍʏ ᴏᴡɴᴇʀ
+item2.X-ABLabel:Owner
 EMAIL;type=INTERNET:${email}
 ORG:ᴏᴡɴᴇʀ ʙᴏᴛ
 END:VCARD`
@@ -1366,13 +1369,47 @@ END:VCARD`
         containsAutoReply: true,
         mediaType: 1,
         jpegThumbnail: await getBuffer(global.imglogo),
-        mediaUrl: `https://www.youtube.com/@haidarmahiruofficial`,
-        sourceUrl: `https://www.youtube.com/@haidarmahiruofficial`
+        mediaUrl: `https://www.youtube.com/@jojokuchannel`,
+        sourceUrl: `https://www.youtube.com/@jojokuchannel`
       }
     }
   }, { quoted: m })
 }
 break;
+case 'test': case 'test':{
+                        var cpap = `*[ LAPOR BANG ]*\n\nKiriman dari : @${m.sender.split("@")[0]}\nPesan : ${text}`
+                        if (!text) return reply(`Reply Pesan nya, contoh:\n${prefix + command} Fitur play bermasalah`)
+                            var sections = [
+                                {
+                                    title: `Respon pesan di tanggapi`,
+                                    id: ``
+                                },
+                                {
+                                    title: `Respon pesan tidak di tanggapi`,
+                                    id: ``
+                                },
+                                {
+                                    title: `Blokir Pengirim`,
+                                    id: ``
+                                },
+                                {
+                                    title: `Beri notifikasi spam pengirim`,
+                                    id: `}`
+                                }
+                            ]
+                            const unduh = {
+                                title: "Click Here",
+                                sections: [
+                                    {
+                                        title: "LAPOR PAK",
+                                        rows: sections,
+                                    }
+                                ]
+                            }
+                            client.sendListButtonv2(global.ownernumber + `@s.whatsapp.net`, cpap, unduh, "Joy", { quoted: m })
+                            reply(`Laporan berhasil terkirim\nLaporan : ${text}\nPengirim : ${m.sender.split("@")[0]}`)
+                        }
+                        break
 
 
     // TAMBAHKAN CASE UNTUK HANDLE INTERACTIVE RESPONSE
