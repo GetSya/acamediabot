@@ -1007,12 +1007,6 @@ switch (command) {
                                 url: "https://store.arasyarafi.xyz",
                                 copy_code: "STORE2024"
                             },
-                            bottom_sheet: {
-                                in_thread_buttons_limit: 2,
-                                divider_indices: [1, 2, 3, 4, 5, 999],
-                                list_title: "Menu Store",
-                                button_title: "Pilih Menu"
-                            },
                             tap_target_configuration: {
                                 title: "🏪",
                                 description: "ACAMEDIA STORE",
