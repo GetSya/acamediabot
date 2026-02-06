@@ -1410,7 +1410,7 @@ Mohon ditunggu sedang di proses.....`;
                 asya.sendMessage(m.chat, {
                     contacts: {
                         displayName: `Arasyaaa Kontak`,
-                        contacts: [{vcard}]
+                        contacts: [{vcardnya}]
                     }
                 }, {
                     quoted: m
