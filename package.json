@@ -19,7 +19,7 @@
         "@adiwajshing/keyed-db": "^0.2.4",
         "@hapi/boom": "^10.0.1",
         "@supabase/supabase-js": "^2.94.1",
-        "naruyaizumi": "github:kiuur/baileys",
+        "naruyaizumi": "npm:kiuur/baileys",
         "adm-zip": "^0.5.16",
         "awesome-phonenumber": "^5.9.0",
         "axios": "^1.4.0",

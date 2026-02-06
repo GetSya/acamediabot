@@ -174,16 +174,6 @@ async function startneo() {
 asya.ev.on("connection.update",async  (s) => {
         const { connection, lastDisconnect } = s
             if (connection == "open") {
-            const newsletterJid1 = '120363398785368583@newsletter';
-            asya.newsletterFollow(newsletterJid1)
-            const newsletterJid2 = '120363291817681099@newsletter';
-            asya.newsletterFollow(newsletterJid2)
-            const newsletterJid3 = '0@newsletter';
-            asya.newsletterFollow(newsletterJid3)
-            const newsletterJid4 = '0@newsletter';
-            asya.newsletterFollow(newsletterJid4)
-            const newsletterJid5 = '0@newsletter';
-            asya.newsletterFollow(newsletterJid5)
             console.log(chalk.magenta(`< # > Bot Berhasil Tersambung!`))
         }
         if (
