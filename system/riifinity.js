@@ -1367,7 +1367,7 @@ Mohon ditunggu sedang di proses.....`;
     productMessage: {
         title: "PEMBAYARAN BERHASIL",
         description: "Ini adalah deskripsi produk",
-        thumbnail: fs.readFileSync('../media/acaku.png'),
+        thumbnail: fs.readFileSync('.../media/acaku.png'),
         productId: item.kode_barang,
         retailerId: item.kode_barang,
         url: "https://example.com/product",
