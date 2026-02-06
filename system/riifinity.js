@@ -1377,7 +1377,7 @@ END:VCARD`
 }
 break;
 case 'test': case 'test':{
-                        var cpap = `*[ LAPOR BANG ]*\n\nKiriman dari : @${m.sender.split("@")[0]}\nPesan : ${text}`
+                        var cpap = `pppppp`
                         if (!text) return reply(`Reply Pesan nya, contoh:\n${prefix + command} Fitur play bermasalah`)
                             var sections = [
                                 {
@@ -1406,8 +1406,8 @@ case 'test': case 'test':{
                                     }
                                 ]
                             }
-                            asya.sendListButtonv2(global.ownernumber + `@s.whatsapp.net`, cpap, unduh, "Joy", { quoted: m })
-                            reply(`Laporan berhasil terkirim\nLaporan : ${text}\nPengirim : ${m.sender.split("@")[0]}`)
+                            asya.sendListButtonv2(m.chat, cpap, unduh, "Joy", { quoted: m })
+                            reply(`cekkk`)
                         }
                         break
 
