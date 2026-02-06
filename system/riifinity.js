@@ -755,7 +755,7 @@ const makeInteractiveStore = (title, products, footerText, buttonTitle = "Pilih 
             header: title,
             title: `ACAMEDIA STORE • ${products.length} Produk`,
             footer: `${footerText} • Halaman 1 dari ${productChunks.length}`,
-            image: fs.readFileSync('../media/acaku.png'),
+            image: fs.readFileSync('.../media/acaku.png'),
             nativeFlowMessage: {
                 messageParamsJson: JSON.stringify({
                     limited_time_offer: {
@@ -862,7 +862,7 @@ const makePaginatedStore = async (asya, m, products, page = 1, title = "SEMUA PR
             header: title,
             title: `Halaman ${currentPage}/${totalPages}`,
             footer: `📊 ${products.length} produk • 🔢 ${startIndex + 1}-${endIndex}`,
-            image: fs.readFileSync('../media/acaku.png'),
+            image: fs.readFileSync('.../media/acaku.png'),
             nativeFlowMessage: {
                 messageParamsJson: JSON.stringify({
                     limited_time_offer: {
@@ -996,7 +996,7 @@ switch (command) {
                     header: teks,
                     title: titlenya,
                     footer: `📊 Total ${totalProducts} produk | 📁 ${categoryList.length} kategori`,
-                    image: fs.readFileSync('../media/acaku.png'),
+                    image: fs.readFileSync('.../media/acaku.png'),
                     nativeFlowMessage: {
                         messageParamsJson: JSON.stringify({
                             limited_time_offer: {
@@ -1070,7 +1070,7 @@ case 'semuaproduk':
                 header: `📦 SEMUA PRODUK`,
                 title: tekslagi,
                 footer: `Total ${db.length} produk`,
-                image: fs.readFileSync('../media/acaku.png'),
+                image: fs.readFileSync('.../media/acaku.png'),
                 nativeFlowMessage: {
                     messageParamsJson: JSON.stringify({
                         bottom_sheet: {
@@ -1151,7 +1151,7 @@ case 'semuaproduk':
                     header: product.nama_barang,
                     title: "DETAIL PRODUK",
                     footer: `ACAMEDIA STORE • No. ${index + 1}`,
-                    image: fs.readFileSync('../media/acaku.png'),
+                    image: fs.readFileSync('.../media/acaku.png'),
                     nativeFlowMessage: {
                         messageParamsJson: JSON.stringify({
                             limited_time_offer: {
