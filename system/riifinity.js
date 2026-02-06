@@ -1448,6 +1448,42 @@ case 'test': case 'test':{
 
     // TAMBAHKAN CASE UNTUK HANDLE INTERACTIVE RESPONSE
     default:
+
+                        
+                        if (budy.startsWith('=>')) {
+                            if (!isOwner) return XeonStickOwner()
+                            function Return(sul) {
+                                sat = JSON.stringify(sul, null, 2)
+                                bang = util.format(sat)
+                                if (sat == undefined) {
+                                    bang = util.format(sul)
+                                }
+                                return reply(bang)
+                            }
+                            try {
+                                reply(util.format(eval(`(async () => { return ${budy.slice(3)} })()`)))
+                            } catch (e) {
+                                reply(String(e))
+                            }
+                        }
+        
+                        if (budy.startsWith('>')) {
+                            if (!isOwner) return XeonStickOwner()
+                            try {
+                                let evaled = await eval(budy.slice(2))
+                                if (typeof evaled !== 'string') evaled = require('util').inspect(evaled)
+                                await reply(evaled)
+                            } catch (err) {
+                                await reply(String(err))
+                            }
+                        }
+                        if (budy.startsWith('$')) {
+                            if (!isOwner) return XeonStickOwner()
+                            exec(budy.slice(2), (err, stdout) => {
+                                if (err) return reply(err)
+                                if (stdout) return reply(stdout)
+                            })
+                        }
         if (m.mtype === 'interactiveResponseMessage') {
     try {
         const paramsJson = m.message?.interactiveResponseMessage?.nativeFlowResponseMessage?.paramsJson;
