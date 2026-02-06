@@ -1403,7 +1403,7 @@ Mohon ditunggu sedang di proses.....`;
                     case 'owner': {
                 asya.sendMessage(m.chat, {
                     contacts: {
-                        displayName: `${list.length} Contact`,
+                        displayName: `Syaa Contact`,
                         contacts: list
                     }
                 }, {
