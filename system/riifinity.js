@@ -1400,41 +1400,17 @@ Mohon ditunggu sedang di proses.....`;
         break;
 
         /// ---------owner menu---------- ///
-case 'owner': {
-  const kontakUtama = {
-    displayName: 'ARASYA RAFI',
-    vcard: `BEGIN:VCARD
-VERSION:3.0
-N:;;;; 
-FN:${global.ownername}
-item1.TEL;waid=6288214772441:6288214772441
-item1.X-ABLabel:ᴅᴇᴠᴇʟᴏᴘᴇʀ
-item2.TEL;waid=${global.ownernumber}:${global.ownernumber}
-item2.X-ABLabel:Owner
-EMAIL;type=INTERNET:${email}
-ORG:ᴏᴡɴᴇʀ ʙᴏᴛ
-END:VCARD`
-  }
-  await asya.sendMessage(from, {
-    contacts: { contacts: [kontakUtama] },
-    contextInfo: {
-      forwardingScore: 999,
-      isForwarded: false,
-      mentionedJid: [sender],
-      externalAdReply: {
-        showAdAttribution: true,
-        renderLargerThumbnail: true,
-        title: font(`ARASYA`),
-        containsAutoReply: true,
-        mediaType: 1,
-        jpegThumbnail: await getBuffer(global.imglogo),
-        mediaUrl: `https://www.youtube.com/@jojokuchannel`,
-        sourceUrl: `https://www.youtube.com/@jojokuchannel`
-      }
-    }
-  }, { quoted: m })
-}
-break;
+                    case 'owner': {
+                asya.sendMessage(m.chat, {
+                    contacts: {
+                        displayName: `${list.length} Contact`,
+                        contacts: list
+                    }
+                }, {
+                    quoted: m
+                })
+            }
+                break
 case 'test': case 'test':{
                         var cpap = `pppppp`
                             var sections = [
