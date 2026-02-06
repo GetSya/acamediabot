@@ -225,41 +225,6 @@ asya.ev.on("connection.update",async  (s) => {
     return await asya.sendMessage(jid, listMessage, { quoted: quoted });
 };
 
-asya.sendListButtonv2 = async (jid, text, list, footer, image, quoted, options = {}) => {
-    let msg000 = generateWAMessageFromContent(jid, {viewOnceMessage: {
-        message: {
-            "messageContextInfo": {
-              "deviceListMetadata": {},
-              "deviceListMetadataVersion": 2
-            },
-            interactiveMessage: proto.Message.InteractiveMessage.create({
-              body: proto.Message.InteractiveMessage.Body.create({
-                text: text, 
-              }),
-              footer: proto.Message.InteractiveMessage.Footer.create({
-                text: footer, 
-              }),
-              nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
-                buttons: [{
-                    name: "single_select",
-                    buttonParamsJson: JSON.stringify(list)
-                  }
-               ],
-              }), 
-              contextInfo: {
-                      mentionedJid: [m.sender], 
-                      forwardingScore: 999,
-                      isForwarded: true
-                    }
-            })
-        }
-      }
-    }, {userJid: m.chat, quoted: m})
-    asya.relayMessage(msg000.key.remoteJid, msg000.message, {
-      messageId: msg000.key.id, quoted: m,
-      })
-      }
-
     asya.sendImageAsSticker = async (jid, path, quoted, options = {}) => {
         let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,` [1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
         let buffer

@@ -349,6 +349,45 @@ newsletterJid: '120363398785368583@newsletter',
 }}
 }
 
+
+//——————————[ BISMILLAH ]——————————//
+
+asya.sendListButtonv2 = async (jid, text, list, footer, image, quoted, options = {}) => {
+    let msg000 = generateWAMessageFromContent(jid, {viewOnceMessage: {
+        message: {
+            "messageContextInfo": {
+              "deviceListMetadata": {},
+              "deviceListMetadataVersion": 2
+            },
+            interactiveMessage: proto.Message.InteractiveMessage.create({
+              body: proto.Message.InteractiveMessage.Body.create({
+                text: text, 
+              }),
+              footer: proto.Message.InteractiveMessage.Footer.create({
+                text: footer, 
+              }),
+              nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
+                buttons: [{
+                    name: "single_select",
+                    buttonParamsJson: JSON.stringify(list)
+                  }
+               ],
+              }), 
+              contextInfo: {
+                      mentionedJid: [m.sender], 
+                      forwardingScore: 999,
+                      isForwarded: true
+                    }
+            })
+        }
+      }
+    }, {userJid: m.chat, quoted: m})
+    asya.relayMessage(msg000.key.remoteJid, msg000.message, {
+      messageId: msg000.key.id, quoted: m,
+      })
+      }
+
+
 //——————————[ FUNCTION ]——————————//
 
         async function balas(teks) {
