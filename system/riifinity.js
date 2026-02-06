@@ -139,6 +139,8 @@ const STORE_ICONS = {
     delete: '🗑️'
 }
 
+const memuat = `Tunggu sebentar.....`
+
 // --- STORE FUNCTIONS ---
 const loadDB = async () => {
     try {
@@ -952,6 +954,7 @@ switch (command) {
             case 'menu':
                 case 'help':
         {
+            reply(memuat)
             let db = await loadDB();
             if (db.length === 0) {
                 return await asya.sendMessage(m.chat, { 
@@ -1054,6 +1057,7 @@ switch (command) {
 case 'allstore':
 case 'semuaproduk':
     {
+        reply(memuat)
         let db = await loadDB();
         if (db.length === 0) {
             return await asya.sendMessage(m.chat, { 
@@ -1098,6 +1102,7 @@ case 'semuaproduk':
     case 'pilih':
     case 'pilih-item':
         {
+            reply(memuat)
             if (args.length === 0) {
                 return await asya.sendMessage(m.chat, { 
                     text: `${STORE_ICONS.search} *Format:* ${prefix}pilih [nomor]\n${STORE_ICONS.list} *Contoh:* ${prefix}pilih 3` 
@@ -1210,6 +1215,7 @@ case 'semuaproduk':
     case 'cari':
     case 'search':
         {
+            reply(memuat)
             if (args.length === 0) {
                 return await asya.sendMessage(m.chat, { 
                     text: `${STORE_ICONS.search} *Format:* ${prefix}pencarian [nama produk]\n${STORE_ICONS.list} *Contoh:* ${prefix}pencarian Spotify` 
@@ -1246,6 +1252,7 @@ case 'semuaproduk':
     case 'beli':
     case 'buy':
         {
+            reply(memuat)
             if (args.length === 0) {
                 return await asya.sendMessage(m.chat, { 
                     text: `${STORE_ICONS.cart} *Format:* ${prefix}beli [nomor]\n${STORE_ICONS.list} *Contoh:* ${prefix}beli 3` 
@@ -1401,7 +1408,7 @@ Mohon ditunggu sedang di proses.....`;
         /// ---------owner menu---------- ///
 case 'owner': {
   const kontakUtama = {
-    displayName: '𝗥𝗶𝗳𝗶𝗶𝗻𝗶𝘁𝘆 𝗦𝗽𝗮𝗰𝗲',
+    displayName: 'ARASYA RAFI',
     vcard: `BEGIN:VCARD
 VERSION:3.0
 N:;;;; 
@@ -1423,7 +1430,7 @@ END:VCARD`
       externalAdReply: {
         showAdAttribution: true,
         renderLargerThumbnail: true,
-        title: font(`ᴏᴡɴᴇʀ ʜᴀɪᴅᴀʀ ʀᴠx`),
+        title: font(`ARASYA`),
         containsAutoReply: true,
         mediaType: 1,
         jpegThumbnail: await getBuffer(global.imglogo),
@@ -1436,7 +1443,6 @@ END:VCARD`
 break;
 case 'test': case 'test':{
                         var cpap = `pppppp`
-                        if (!text) return reply(`Reply Pesan nya, contoh:\n${prefix + command} Fitur play bermasalah`)
                             var sections = [
                                 {
                                     title: `Respon pesan di tanggapi`,

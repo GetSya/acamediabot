@@ -11,7 +11,7 @@
         "media": "media"
     },
     "scripts": {
-        "start": "node system/index.js"
+        "start": "system/index.js"
     },
     "author": "𝗬𝗧: 𝗛𝗮𝗶𝗱𝗮𝗿𝗥𝘃𝘅",
     "license": "MIT",
