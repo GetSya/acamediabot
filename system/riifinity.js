@@ -755,7 +755,7 @@ const makeInteractiveStore = (title, products, footerText, buttonTitle = "Pilih 
             header: title,
             title: `ACAMEDIA STORE • ${products.length} Produk`,
             footer: `${footerText} • Halaman 1 dari ${productChunks.length}`,
-            image: { url: "https://files.catbox.moe/mb0g1x.png" },
+            image: '../media/acaku.png',
             nativeFlowMessage: {
                 messageParamsJson: JSON.stringify({
                     limited_time_offer: {
@@ -862,7 +862,7 @@ const makePaginatedStore = async (asya, m, products, page = 1, title = "SEMUA PR
             header: title,
             title: `Halaman ${currentPage}/${totalPages}`,
             footer: `📊 ${products.length} produk • 🔢 ${startIndex + 1}-${endIndex}`,
-            image: { url: "https://files.catbox.moe/mb0g1x.png" },
+            image: '../media/acaku.png',
             nativeFlowMessage: {
                 messageParamsJson: JSON.stringify({
                     limited_time_offer: {
@@ -996,7 +996,7 @@ switch (command) {
                     header: teks,
                     title: titlenya,
                     footer: `📊 Total ${totalProducts} produk | 📁 ${categoryList.length} kategori`,
-                    image: { url: "https://files.catbox.moe/mb0g1x.png" },
+                    image: '../media/acaku.png',
                     nativeFlowMessage: {
                         messageParamsJson: JSON.stringify({
                             limited_time_offer: {
@@ -1070,7 +1070,7 @@ case 'semuaproduk':
                 header: `📦 SEMUA PRODUK`,
                 title: tekslagi,
                 footer: `Total ${db.length} produk`,
-                image: { url: "https://files.catbox.moe/mb0g1x.png" },
+                image: '../media/acaku.png',
                 nativeFlowMessage: {
                     messageParamsJson: JSON.stringify({
                         bottom_sheet: {
@@ -1151,7 +1151,7 @@ case 'semuaproduk':
                     header: product.nama_barang,
                     title: "DETAIL PRODUK",
                     footer: `ACAMEDIA STORE • No. ${index + 1}`,
-                    image: { url: "https://files.catbox.moe/mb0g1x.png" },
+                    image: '../media/acaku.png',
                     nativeFlowMessage: {
                         messageParamsJson: JSON.stringify({
                             limited_time_offer: {
@@ -1333,7 +1333,26 @@ ${STORE_ICONS.time} Berlaku ${STORE_SETTINGS.expired} menit`;
                         
                         item.stok = Math.max(0, item.stok - 1);
                         await saveDB(db);
-                        
+                            var sections = [
+                                {
+                                    title: `Format Kirim Email`,
+                                    id: `/formatmail`
+                                },
+                                {
+                                    title: `Format User Kirim Email`,
+                                    id: `/userkirimemail`
+                                }
+                            ]
+                            const unduh = {
+                                title: "Klik disini",
+                                sections: [
+                                    {
+                                        title: "LAPOR PAK",
+                                        rows: sections,
+                                    }
+                                ]
+                            }
+                            asya.sendListButtonv2(m.chat, cpap, unduh, "Joy", { quoted: m })
                         const successMsg = 
 `✅ *PEMBAYARAN BERHASIL!*
 
@@ -1348,7 +1367,7 @@ Mohon ditunggu sedang di proses.....`;
     productMessage: {
         title: "PEMBAYARAN BERHASIL",
         description: "Ini adalah deskripsi produk",
-        thumbnail: { url: "https://files.catbox.moe/mb0g1x.png" },
+        thumbnail: '../media/acaku.png',
         productId: item.kode_barang,
         retailerId: item.kode_barang,
         url: "https://example.com/product",
