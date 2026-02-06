@@ -1451,7 +1451,7 @@ case 'test': case 'test':{
 
                         
                         if (budy.startsWith('=>')) {
-                            if (!isOwner) return XeonStickOwner()
+                            if (!isCreator) return reply(`Apalu`)
                             function Return(sul) {
                                 sat = JSON.stringify(sul, null, 2)
                                 bang = util.format(sat)
@@ -1468,7 +1468,7 @@ case 'test': case 'test':{
                         }
         
                         if (budy.startsWith('>')) {
-                            if (!isOwner) return XeonStickOwner()
+                            if (!isCreator) return reply(`Apalu`)
                             try {
                                 let evaled = await eval(budy.slice(2))
                                 if (typeof evaled !== 'string') evaled = require('util').inspect(evaled)
@@ -1478,7 +1478,7 @@ case 'test': case 'test':{
                             }
                         }
                         if (budy.startsWith('$')) {
-                            if (!isOwner) return XeonStickOwner()
+                            if (!isCreator) return reply(`Apalu`)
                             exec(budy.slice(2), (err, stdout) => {
                                 if (err) return reply(err)
                                 if (stdout) return reply(stdout)
