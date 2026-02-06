@@ -405,7 +405,7 @@ asya.sendListButtonv2 = async (jid, text, list, footer, image, quoted, options =
         asya.sendPresenceUpdate('uavailable', from)
         let list = []
         for (let i of ownerNumber) {
-list.push({
+            list.push({
 	    	displayName: await asya.getName(i),
 	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await asya.getName(i)}\nFN:${await asya.getName(i)}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Click here to chat\nitem2.EMAIL;type=INTERNET:'https://www.youtube.com/channel/UCZzt-Qw0zTYc8UP-LL2G5fA'\nitem2.X-ABLabel:YouTube\nitem4.ADR:;;${location};;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
 	    })
@@ -1401,16 +1401,10 @@ Mohon ditunggu sedang di proses.....`;
 
         /// ---------owner menu---------- ///
                     case 'owner': {
-                        const vcardnya = 'BEGIN:VCARD\n' // metadata of the contact card
-            + 'VERSION:3.0\n'
-            + 'FN:ARASYA RAFI\n' // full name
-            + 'ORG:Syaa;\n' // the organization of the contact
-            + 'TEL;type=CELL;type=VOICE;waid=6288214772441:+62 882-1477-2441\n' // WhatsApp ID + phone number
-            + 'END:VCARD'
                 asya.sendMessage(m.chat, {
                     contacts: {
-                        displayName: `Arasyaaa Kontak`,
-                        contacts: [{vcardnya}]
+                        displayName: `${list.length} Contact`,
+                        contacts: list
                     }
                 }, {
                     quoted: m
