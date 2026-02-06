@@ -402,7 +402,15 @@ asya.sendListButtonv2 = async (jid, text, list, footer, image, quoted, options =
         );
         };
 
-        asya.sendPresenceUpdate('uavailable', from)
+        asya.sendPresenceUpdate('uavailable', from).
+
+        const vcards = 'BEGIN:VCARD\n' // metadata of the contact card
+            + 'VERSION:3.0\n'
+            + 'FN:Arasya Rafi\n' // full name
+            + 'ORG:Developer of Acamedia;\n' // the organization of the contact
+            + 'TEL;type=CELL;type=VOICE;waid=6288214772441:+62 882-1477-2441\n' // WhatsApp ID + phone number
+            + 'END:VCARD'
+
         let list = []
         for (let i of ownerNumber) {
             list.push({
@@ -410,6 +418,7 @@ asya.sendListButtonv2 = async (jid, text, list, footer, image, quoted, options =
 	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await asya.getName(i)}\nFN:${await asya.getName(i)}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Click here to chat\nitem2.EMAIL;type=INTERNET:'https://www.youtube.com/channel/UCZzt-Qw0zTYc8UP-LL2G5fA'\nitem2.X-ABLabel:YouTube\nitem4.ADR:;;${location};;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
 	    })
 	}
+
 	function saveDb() {
     fs.writeFileSync('./database/set.json', JSON.stringify(db, null, 2));
 }
@@ -1399,18 +1408,22 @@ Mohon ditunggu sedang di proses.....`;
         }
         break;
 
-        /// ---------owner menu---------- ///
-                    case 'owner': {
-                asya.sendMessage(m.chat, {
-                    contacts: {
-                        displayName: `Syaa Contact`,
-                        contacts: list
-                    }
-                }, {
-                    quoted: m
-                })
-            }
-                break
+        /* ---------owner menu---------- */
+
+
+
+case 'owner': case 'admin':{
+    await asya.sendMessage(
+    m.chat,
+    {
+        contacts: {
+            displayName: 'Arasyaaaa',
+            contacts: [{ vcards }]
+        }
+    }
+)
+}
+break
 case 'test': case 'test':{
                         var cpap = `pppppp`
                             var sections = [
