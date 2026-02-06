@@ -1401,10 +1401,16 @@ Mohon ditunggu sedang di proses.....`;
 
         /// ---------owner menu---------- ///
                     case 'owner': {
+                        const vcardnya = 'BEGIN:VCARD\n' // metadata of the contact card
+            + 'VERSION:3.0\n'
+            + 'FN:ARASYA RAFI\n' // full name
+            + 'ORG:Syaa;\n' // the organization of the contact
+            + 'TEL;type=CELL;type=VOICE;waid=6288214772441:+62 882-1477-2441\n' // WhatsApp ID + phone number
+            + 'END:VCARD'
                 asya.sendMessage(m.chat, {
                     contacts: {
-                        displayName: `${list.length} Contact`,
-                        contacts: list
+                        displayName: `Arasyaaa Kontak`,
+                        contacts: [{vcard}]
                     }
                 }, {
                     quoted: m
