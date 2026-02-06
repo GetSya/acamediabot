@@ -61,7 +61,7 @@ async function startneo() {
   const asya = makeWASocket({
     version,
     logger: Pino({ level: 'silent' }),
-    browser: ['Mac OS', 'Chrome', '121.0.6167.160'],
+    browser: ['Windows', 'Firefox'],
     printQRInTerminal: !process.argv.includes("--pairing-code"),
     auth: {
       creds: state.creds,
