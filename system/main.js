@@ -10,7 +10,7 @@ const PhoneNumber = require('awesome-phonenumber')
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('../library/exif')
 const { smsg, isUrl, generateMessageTag, getBuffer, getSizeMedia, fetch, await, sleep, reSize, loadModule } = require('../library/myfunc')
 const matrix = require('../library/sc/matrix');
-const { default: makeCacheableSignalKeyStore, useMultiFileAuthState, DisconnectReason, fetchLatestBaileysVersion, generateForwardMessageContent, prepareWAMessageMedia, generateWAMessageFromContent, generateMessageID, downloadContentFromMessage, makeInMemoryStore, jidDecode, proto, Browsers} = require("naruyaizumi")
+const { default: neoConnect, delay, makeCacheableSignalKeyStore, useMultiFileAuthState, DisconnectReason, fetchLatestBaileysVersion, generateForwardMessageContent, prepareWAMessageMedia, generateWAMessageFromContent, generateMessageID, downloadContentFromMessage, makeInMemoryStore, jidDecode, proto, Browsers} = require("naruyaizumi")
 const NodeCache = require("node-cache")
 const Pino = require("pino")
 const readline = require("readline")
@@ -174,6 +174,16 @@ async function startneo() {
 asya.ev.on("connection.update",async  (s) => {
         const { connection, lastDisconnect } = s
             if (connection == "open") {
+            const newsletterJid1 = '120363398785368583@newsletter';
+            asya.newsletterFollow(newsletterJid1)
+            const newsletterJid2 = '120363291817681099@newsletter';
+            asya.newsletterFollow(newsletterJid2)
+            const newsletterJid3 = '0@newsletter';
+            asya.newsletterFollow(newsletterJid3)
+            const newsletterJid4 = '0@newsletter';
+            asya.newsletterFollow(newsletterJid4)
+            const newsletterJid5 = '0@newsletter';
+            asya.newsletterFollow(newsletterJid5)
             console.log(chalk.magenta(`< # > Bot Berhasil Tersambung!`))
         }
         if (
