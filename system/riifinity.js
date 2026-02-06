@@ -404,7 +404,7 @@ asya.sendListButtonv2 = async (jid, text, list, footer, image, quoted, options =
 
         asya.sendPresenceUpdate('uavailable', from)
         let list = []
-        for (let i of owner) {
+        for (let i of ownerNumber) {
 list.push({
 	    	displayName: await asya.getName(i),
 	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await asya.getName(i)}\nFN:${await asya.getName(i)}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Click here to chat\nitem2.EMAIL;type=INTERNET:'https://www.youtube.com/channel/UCZzt-Qw0zTYc8UP-LL2G5fA'\nitem2.X-ABLabel:YouTube\nitem4.ADR:;;${location};;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
