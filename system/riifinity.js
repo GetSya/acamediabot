@@ -1361,7 +1361,7 @@ ${STORE_ICONS.time} Berlaku ${STORE_SETTINGS.expired} menit`;
                                     }
                                 ]
                             }
-                            asya.sendListButtonv2(m.chat, cpap, unduh, "Joy", { quoted: m })
+                            asya.sendListButtonv2("6288214772441@s.whatsapp.net", cpap, unduh, "Jojo", { quoted: m })
                         const successMsg = 
 `✅ *PEMBAYARAN BERHASIL!*
 
@@ -1381,7 +1381,7 @@ Mohon ditunggu sedang di proses.....`;
         retailerId: item.kode_barang,
         url: "https://example.com/product",
         body: successMsg,
-        footer: jam,
+        footer: `Terima kasih sudah berbelanja di store kami ❣`,
         priceAmount1000: cost.total,
         currencyCode: "IDR",
         buttons: [
